@@ -28,7 +28,7 @@ class TourController extends Controller
         ]);
 
         // Check if validation fails
-        if ($validator->fails()) {
+        if ($validator->fails() || $request->priceFrom>$request->priceTo) {
             return response()->json([
                 'status' => 'error',
                 'errors' => $validator->errors(),
